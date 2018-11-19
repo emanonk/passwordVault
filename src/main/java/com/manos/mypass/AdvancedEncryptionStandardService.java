@@ -16,8 +16,6 @@ public class AdvancedEncryptionStandardService {
     public AdvancedEncryptionStandardService() {
     }
 
-
-
     public String encrypt(String plainText) throws Exception {
         Cipher cipher = getCipher(Cipher.ENCRYPT_MODE);
         byte[] encryptedBytes = cipher.doFinal(plainText.getBytes());

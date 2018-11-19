@@ -13,7 +13,7 @@ public class ApplicationArgumentsService {
 
 
     @Autowired
-    private ApplicationArguments applicationArguments;
+    ApplicationArguments applicationArguments;
 
 
     public String[] getApplicationArguments() {
