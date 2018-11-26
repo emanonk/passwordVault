@@ -8,8 +8,9 @@ import org.springframework.stereotype.Controller;
  * Created by manoskammas on 15/11/2018.
  */
 @Controller()
-public class CommandController {
+public class CommandController implements ApplicationController{
 
+    @Override
     public void runApplication(SessionParameters sessionParameters) {
 
     }

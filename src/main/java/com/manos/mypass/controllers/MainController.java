@@ -3,9 +3,10 @@ package com.manos.mypass.controllers;
 import com.manos.mypass.ApplicationArgumentsService;
 import com.manos.mypass.enums.Language;
 import com.manos.mypass.model.SessionParameters;
+import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.proxy.Factory;
 import org.springframework.stereotype.Controller;
-
 
 
 /**
@@ -18,13 +19,9 @@ public class MainController {
     @Autowired
     ApplicationArgumentsService applicationArgumentsService;
 
-    @Autowired
-    CommandController commandController;
 
     @Autowired
-    CommandLineInterfaceController commandLineInterfaceController;
-
-
+    ApplicationControllerFactory applicationControllerFactory;
 
 
     public void applicationArgumentsFilter() {
@@ -35,12 +32,11 @@ public class MainController {
         sessionParameters.setPreferredLanguage(Language.UK);
         sessionParameters.setArguments(sourceArgs);
 
+        ApplicationController controller = applicationControllerFactory.getController(sourceArgs);
 
-        if(sourceArgs.length == 0){
-            commandLineInterfaceController.runApplication(sessionParameters);
-        }else{
-            commandController.runApplication(sessionParameters);
-        }
+
+        controller.runApplication(sessionParameters);
+
 
     }
 
